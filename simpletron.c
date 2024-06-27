@@ -17,6 +17,8 @@
 #define BRANCHZERO 42
 #define HALT 43
 
+//Feito por Paulo Sergio Campos de Lima
+
 void clear(int memory[], int size, char signal[]) {
 	for(int i = 0; i < size; i++) {
 		memory[i] = 0;
@@ -143,6 +145,11 @@ int main() {
 				contadorInstrucao++;
 				continue;
 			case DIVIDE:
+				if(acumulador == 0) {
+					printf("Tentativa de dividir por zero\n");
+					contadorInstrucao = 101;
+					continue;
+				}
 				acumulador = memory[operando] /  acumulador;
 				contadorInstrucao++;
 				continue;
